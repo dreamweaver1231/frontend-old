@@ -23,11 +23,6 @@ const makeSelectLocationState = () => {
 const selectAppPageDomain = () => (state) => state.get('app');
 
 /**
- * Other specific selectors
- */
-
-
-/**
  * Default selector used by EmployeePage
  */
 
