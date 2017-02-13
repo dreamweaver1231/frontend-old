@@ -18,8 +18,8 @@ import { createStructuredSelector } from 'reselect';
 
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
-import { toggleSidebar } from './actions';
-import makeSelectAppPage from './selectors';
+import { makeSelectAppPage } from 'containers/App/selectors';
+import { toggleSidebar } from 'containers/App/actions';
 
 class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 

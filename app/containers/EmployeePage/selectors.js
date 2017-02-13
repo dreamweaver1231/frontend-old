@@ -3,23 +3,25 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the employeePage state domain
  */
-const selectEmployeePageDomain = () => (state) => state.get('employee');
+const selectEmployee = () => (state) => state.get('employee');
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by EmployeePage
- */
-
-const makeSelectEmployeePage = () => createSelector(
-  selectEmployeePageDomain(),
-  (substate) => substate.toJS()
+const makeSelectEmployees = () => createSelector(
+  selectEmployee(),
+  (employeeState) => employeeState.getIn(['employeeData', 'employeeList'])
+);
+const makeSelectLoading = () => createSelector(
+  selectEmployee(),
+  (employeeState) => employeeState.get('loading')
 );
 
-export default makeSelectEmployeePage;
+const makeSelectError = () => createSelector(
+  selectEmployee(),
+  (employeeState) => employeeState.get('error')
+);
+
 export {
-  selectEmployeePageDomain,
+  selectEmployee,
+  makeSelectEmployees,
+  makeSelectLoading,
+  makeSelectError,
 };

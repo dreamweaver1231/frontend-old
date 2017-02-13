@@ -48,6 +48,7 @@ export default function createRoutes(store) {
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('employee', reducer.default);
           injectSagas(sagas.default);
+
           renderRoute(component);
         });
 

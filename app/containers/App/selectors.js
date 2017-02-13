@@ -31,9 +31,8 @@ const makeSelectAppPage = () => createSelector(
   (homeState) => homeState.get('sidebar')
 );
 
-export default makeSelectAppPage;
-
 export {
+  makeSelectAppPage,
   makeSelectLocationState,
   selectAppPageDomain,
 };

@@ -4,33 +4,60 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
-import makeSelectEmployeePage from './selectors';
+import { loadEmployees } from 'containers/EmployeePage/actions';
+import { makeSelectEmployees, makeSelectLoading, makeSelectError } from 'containers/EmployeePage/selectors';
+
+import EmployeeList from 'components/EmployeeList';
 
 export class EmployeePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.props.dispatch(loadEmployees());
+  }
+
   render() {
+    const { loading, error, employees } = this.props;
+    const employeesListProps = {
+      loading,
+      error,
+      employees,
+    };
+
     return (
       <div>
         <Helmet
-          title="EmployeePage"
+          title="Employee Page"
           meta={[
             { name: 'description', content: 'Description of EmployeePage' },
           ]}
         />
+        <EmployeeList {...employeesListProps} />
       </div>
     );
   }
 }
 
 EmployeePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: React.PropTypes.func,
+  loading: React.PropTypes.bool,
+  error: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.bool,
+  ]),
+  employees: React.PropTypes.oneOfType([
+    React.PropTypes.array,
+    React.PropTypes.bool,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
-  EmployeePage: makeSelectEmployeePage(),
+  employees: makeSelectEmployees(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
 });
 
 function mapDispatchToProps(dispatch) {
