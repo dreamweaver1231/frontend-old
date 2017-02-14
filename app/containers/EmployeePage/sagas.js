@@ -12,7 +12,7 @@ import { employeesLoaded, employeeLoadingError } from './actions';
  * Github repos request/response handler
  */
 export function* getEmployees() {
-  const requestURL = 'http://jsonplaceholder.typicode.com/posts';
+  const requestURL = 'http://localhost:4000/employeeData';
 
   try {
     // Call our request helper (see 'utils/request')
