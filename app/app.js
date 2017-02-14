@@ -20,7 +20,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import 'sanitize.css/sanitize.css';
-import 'fixed-data-table/dist/fixed-data-table.min.css';
+import 'fixed-data-table-2/dist/fixed-data-table.min.css';
 
 // Import root app
 import App from 'containers/App';

@@ -1,67 +1,34 @@
-/**
-*
-* EmployeeList
-*
-*/
+import React, { PropTypes } from 'react';
+import EmployeeTable from 'components/EmployeeTable';
+import { CircularProgress, Snackbar } from 'material-ui';
 
-import React from 'react';
-import { CircularProgress } from 'material-ui';
-import { Table, TableBody, TableHeaderColumn, TableRow } from 'material-ui/Table';
-
-const EmployeeList = ({ loading, error, employees }) => {
+function EmployeeList({ loading, error, employees }) {
   if (loading) {
-    return <CircularProgress />;
+    return <CircularProgress size={80} thickness={5} />;
   }
 
   if (error !== false) {
-    const ErrorComponent = () => (
-      <h4>Error Occured</h4>
+    const MessageComponent = () => (
+      <Snackbar
+        open
+        message="Error Occured"
+        autoHideDuration={4000}
+      />
     );
-    return <ErrorComponent />;
+    return <MessageComponent />;
   }
 
   if (employees !== false) {
-    const content = employees.map((item, index) => (
-      <TableRow key={`item-${index}`}>
-        <TableHeaderColumn>{item.Enterprise_ID}</TableHeaderColumn>
-        <TableHeaderColumn>{item.FirstName}</TableHeaderColumn>
-        <TableHeaderColumn>{item.LastName}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Supervisor}</TableHeaderColumn>
-        <TableHeaderColumn>{item.EnterpriseId_Supervisor}</TableHeaderColumn>
-        <TableHeaderColumn>{item.EnterpriseId_myteapprover}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Userid}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Contact_No}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Career_Level}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Cisco_Manager}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Portfolio_name}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Primary_Application}</TableHeaderColumn>
-        <TableHeaderColumn>{item.Location}</TableHeaderColumn>
-        <TableHeaderColumn>{item.SOW}</TableHeaderColumn>
-      </TableRow>
-    ));
-
-    return (
-      <Table bodyStyle={{ overflow: 'visible' }}>
-        <TableBody>
-          {content}
-        </TableBody>
-      </Table>
-    );
+    return <EmployeeTable employees={employees} />;
   }
 
   return null;
-};
+}
 
 EmployeeList.propTypes = {
-  loading: React.PropTypes.bool,
-  employees: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.bool,
-  ]),
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.bool,
-  ]),
+  loading: PropTypes.bool,
+  error: PropTypes.any,
+  employees: PropTypes.any,
 };
 
 export default EmployeeList;
