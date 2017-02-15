@@ -8,8 +8,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
+
 import { loadEmployees } from 'containers/EmployeePage/actions';
 import { makeSelectEmployees, makeSelectLoading, makeSelectError } from 'containers/EmployeePage/selectors';
+
 import EmployeeList from 'components/EmployeeList';
 
 export class EmployeePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

@@ -21,24 +21,25 @@ const EmployeeTable = ({ employees, containerWidth, containerHeight }) => (
     rowHeight={50}
     headerHeight={50}
     width={containerWidth}
-    height={containerHeight || 600}
+    height={containerHeight || 500}
   >
+    <Column
+      header={<Cell>First Name</Cell>}
+      fixed
+      cell={
+        <MyTextCell
+          data={employees}
+          field="FirstName"
+        />
+      }
+      width={200}
+    />
     <Column
       header={<Cell>Enterprise ID</Cell>}
       cell={
         <MyTextCell
           data={employees}
           field="Enterprise_ID"
-        />
-      }
-      width={200}
-    />
-    <Column
-      header={<Cell>First Name</Cell>}
-      cell={
-        <MyTextCell
-          data={employees}
-          field="FirstName"
         />
       }
       width={200}
