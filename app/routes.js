@@ -54,6 +54,35 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+      childRoutes: [
+        {
+          path: '/employee/view',
+          name: 'employeeDetails',
+          getComponent(nextState, cb) {
+            import('components/EmployeeList')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+        {
+          path: '/employee/create',
+          name: 'employeeCreate',
+          getComponent(nextState, cb) {
+            import('components/EmployeeFormCreate')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+        {
+          path: '/employee/edit/:id',
+          name: 'employeeEdit',
+          getComponent(nextState, cb) {
+            import('components/EmployeeFormEdit')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+      ],
     }, {
       path: '*',
       name: 'notfound',

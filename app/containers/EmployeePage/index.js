@@ -15,7 +15,6 @@ import { makeSelectEmployees, makeSelectLoading, makeSelectError } from 'contain
 import EmployeeList from 'components/EmployeeList';
 
 export class EmployeePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
   componentDidMount() {
     this.props.dispatch(loadEmployees());
   }
@@ -36,9 +35,8 @@ export class EmployeePage extends React.PureComponent { // eslint-disable-line r
             { name: 'description', content: 'Description of EmployeePage' },
           ]}
         />
-        <pre>
-          <EmployeeList {...employeesListProps} />
-        </pre>
+        {this.props.children}
+        <EmployeeList {...employeesListProps} />
       </div>
     );
   }
@@ -55,6 +53,7 @@ EmployeePage.propTypes = {
     React.PropTypes.array,
     React.PropTypes.bool,
   ]),
+  children: React.PropTypes.node,
 };
 
 const mapStateToProps = createStructuredSelector({
