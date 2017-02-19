@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 
 const LinkCell = ({ rowIndex, data, field, ...props }) => (
   <Cell {...props}>
-    <Link to={`/employee/edit/${data[rowIndex][field]}`}>
+    <Link to={`/employee/${data[rowIndex][field]}`} >
       {data[rowIndex][field]}
     </Link>
   </Cell>
@@ -60,7 +60,7 @@ export class EmployeeTable extends React.PureComponent { // eslint-disable-line 
             rowHeight={50}
             headerHeight={50}
             width={containerWidth}
-            height={containerHeight || 500}
+            height={containerHeight || 550}
           >
             <Column
               header={<Cell>Enterprise ID</Cell>}
@@ -71,7 +71,9 @@ export class EmployeeTable extends React.PureComponent { // eslint-disable-line 
             {ColumnNode}
           </Table>
           <br />
-          <RaisedButton primary label="Add Employee" style={style} />
+          <Link to={'/employee/create'} >
+            <RaisedButton primary label="Add Employee" style={style} />
+          </Link>
         </div>
       </div>
     );

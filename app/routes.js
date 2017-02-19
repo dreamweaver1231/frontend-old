@@ -56,15 +56,6 @@ export default function createRoutes(store) {
       },
       childRoutes: [
         {
-          path: '/employee/view',
-          name: 'employeeDetails',
-          getComponent(nextState, cb) {
-            import('components/EmployeeList')
-              .then(loadModule(cb))
-              .catch(errorLoading);
-          },
-        },
-        {
           path: '/employee/create',
           name: 'employeeCreate',
           getComponent(nextState, cb) {
@@ -74,7 +65,7 @@ export default function createRoutes(store) {
           },
         },
         {
-          path: '/employee/edit/:id',
+          path: '/employee/:id',
           name: 'employeeEdit',
           getComponent(nextState, cb) {
             import('components/EmployeeFormEdit')

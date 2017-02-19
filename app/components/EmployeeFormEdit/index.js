@@ -5,13 +5,12 @@
 */
 
 import React from 'react';
-import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form/immutable';
 import MenuItem from 'material-ui/MenuItem';
 import { RaisedButton, Divider } from 'material-ui';
 import { SelectField, TextField, DatePicker } from 'redux-form-material-ui';
 
-let EmployeeFormEdit = ({ handleSubmit, pristine, reset, submitting }) => { // eslint-disable-line import/no-mutable-exports
+const EmployeeFormEdit = ({ handleSubmit, pristine, reset, submitting }) => {
   const required = (value) => value == null ? 'Required' : undefined;
   const style = {
     margin: 12,
@@ -105,14 +104,6 @@ EmployeeFormEdit.propTypes = {
 };
 
 // Decorate with redux-form
-EmployeeFormEdit = reduxForm({
+export default reduxForm({
   form: 'employeeForm',
 })(EmployeeFormEdit);
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-export default connect(null, mapDispatchToProps)(EmployeeFormEdit);

@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import EmployeeFormEdit from '../index';
+// import { EmployeeFormCreate } from '../index';
 
-describe('<EmployeeFormEdit />', () => {
+describe('<EmployeeFormCreate />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
